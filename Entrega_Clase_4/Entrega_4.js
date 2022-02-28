@@ -18,7 +18,15 @@ class Container {
         }
     }
 
-    getAll(data_to_parse){
+    readData () {
+        try {
+            return fs.readFileSync(this.file_name, 'utf-8')
+        } catch (error) {
+            print('File Doesn\'t exists')
+        }
+    }
+
+    getAll(data_to_parse=this.readData()){
         const data = []
         for (let item of data_to_parse.split('\n')){
             if (item != ''){
@@ -90,7 +98,7 @@ class Container {
     }
 }
 
-module.exports = {Container}
+module.exports = { Container }
 
 function random_number() {
     const max = 21
