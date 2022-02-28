@@ -102,13 +102,13 @@ function print(message) {
     console.log(message)
 }
 
-(function () {
-    const file = new Container('container')
-    const items = ['Computadora', 'Television', 'Mesa', 'Auto', 'Reloj']
-    for (let item of items){
-        file.save({'Nombre': item, 'Precio': random_number()})
-    }
-    file.getByID('4')
-    // file.deleteByID('2')
-    // file.deleteAll()
-}) ()
+// (function () {
+//     const file = new Container('container')
+//     const items = ['Computadora', 'Television', 'Smatwatch', 'Smartphone', 'Tablet', 'Notebook']
+//     for (let item of items){
+//         file.save({'Nombre': item, 'Precio': random_number()})
+//     }
+//     file.getByID('4')
+//     file.deleteByID('2')
+//     file.deleteAll()
+// }) ()
