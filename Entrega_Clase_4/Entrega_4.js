@@ -90,6 +90,8 @@ class Container {
     }
 }
 
+module.exports = {Container}
+
 function random_number() {
     const max = 21
     const min = 1
