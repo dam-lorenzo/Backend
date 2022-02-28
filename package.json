@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "container": "./Entrega_Clase_4/Entrega_4.js",
+    "print": "./Handle/print.js",
+    "randomNumber": "./Handle/randomNumber.js"
+  }
+}
