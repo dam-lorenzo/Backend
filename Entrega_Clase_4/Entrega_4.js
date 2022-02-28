@@ -39,11 +39,11 @@ class Container {
         const data = this.getAll(data_to_parse)
         let last_id = 1
         for (let item of data) {
-            if (item.Id > last_id) {
-                last_id = item.Id
+            if (item.Id == last_id) {
+                last_id = item.Id + 1
             }
         }
-        return last_id+1
+        return last_id
     }
 
     getByID(id_) {
@@ -60,6 +60,7 @@ class Container {
                 return item
             }
         }
+        print('Id doesn\'t exist in file or file is empty')
     }
 
     deleteByID(id_to_delete) {
@@ -70,13 +71,19 @@ class Container {
             print('File Doesn\'t exists')
             return
         }
-        const data = this.getAll(data_to_parse)
-        this.deleteAll()
-        for (let item of data) {
-            if (item.Id != id_to_delete) {
-                this.save(item)
+        const data = this.removeLines(data_to_parse, id_to_delete)
+        fs.writeFileSync(this.file_name, data)
+    }
+
+    removeLines(data, id_to_delete) {
+        const del = `"Id":${id_to_delete}`
+        const ret = []
+        for (let item of data.split('\n')) {
+            if (item.indexOf(del) === -1) {
+                ret.push(item)
             }
         }
+        return ret.join('\n')
     }
 
     deleteAll() {
@@ -100,8 +107,7 @@ function print(message) {
     for (let item of items){
         file.save({'Nombre': item, 'Precio': random_number()})
     }
-    const a = file.getByID('1')
-    print(a)
-    file.deleteByID('2')
-    file.deleteAll()
+    file.getByID('4')
+    // file.deleteByID('2')
+    // file.deleteAll()
 }) ()
