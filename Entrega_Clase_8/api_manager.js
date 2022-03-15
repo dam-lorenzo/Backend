@@ -3,12 +3,12 @@ const { print }     = require('print')
 class apiManager {
     constructor(){
         this.data = [
-                        {"name":"Computadora","price":12,"Id":1},
-                        {"name":"Television","price":19,"Id":2},
-                        {"name":"Smatwatch","price":20,"Id":3},
-                        {"name":"Smartphone","price":10,"Id":4},
-                        {"name":"Tablet","price":9,"Id":5},
-                        {"name":"Notebook","price":15,"Id":6},
+                        // {"name":"Computadora","price":12,"Id":1},
+                        // {"name":"Television","price":19,"Id":2},
+                        // {"name":"Smatwatch","price":20,"Id":3},
+                        // {"name":"Smartphone","price":10,"Id":4},
+                        // {"name":"Tablet","price":9,"Id":5},
+                        // {"name":"Notebook","price":15,"Id":6},
                     ]
         this.data.length != 0 ? this.id = this.data[this.data.length - 1].Id + 1 : this.Id = 1
     }
