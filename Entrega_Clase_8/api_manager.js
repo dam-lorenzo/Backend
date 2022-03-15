@@ -3,12 +3,12 @@ const { print }     = require('print')
 class apiManager {
     constructor(){
         this.data = [
-                        {"Nombre":"Computadora","Precio":12,"Id":1},
-                        {"Nombre":"Television","Precio":19,"Id":2},
-                        {"Nombre":"Smatwatch","Precio":20,"Id":3},
-                        {"Nombre":"Smartphone","Precio":10,"Id":4},
-                        {"Nombre":"Tablet","Precio":9,"Id":5},
-                        {"Nombre":"Notebook","Precio":15,"Id":6},
+                        {"name":"Computadora","price":12,"Id":1},
+                        {"name":"Television","price":19,"Id":2},
+                        {"name":"Smatwatch","price":20,"Id":3},
+                        {"name":"Smartphone","price":10,"Id":4},
+                        {"name":"Tablet","price":9,"Id":5},
+                        {"name":"Notebook","price":15,"Id":6},
                     ]
         this.data.length != 0 ? this.id = this.data[this.data.length - 1].Id + 1 : this.Id = 1
     }
@@ -41,11 +41,11 @@ class apiManager {
             return {'error': 'el item cargado debe ser un objeto'}
         }
         const item = this.getByID(_id)
-        if ('Nombre' in new_item) {
-            item.Nombre = new_item.Nombre
+        if ('name' in new_item) {
+            item.name = new_item.name
         }
-        if ('Precio' in new_item) {
-            item.Precio = new_item.Precio
+        if ('price' in new_item) {
+            item.price = new_item.price
         }
         return item
     }
