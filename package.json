@@ -1,8 +1,16 @@
 {
   "dependencies": {
-    "express": "^4.17.3",
-    "container": "./Entrega_Clase_4/Entrega_4.js",
+    "ejs": "~3.1.6",
+    "express": "~4.17.3",
+    "express-handlebars": "~6.0.3",
+    "pug": "~3.0.2",
     "print": "./Handle/print.js",
-    "randomNumber": "./Handle/randomNumber.js"
+    "randomNumber": "./Handle/randomNumber.js",
+    "container": "./Entrega_Clase_4/Entrega_4.js",
+    "apiManager": "./Entrega_Clase_8/api_manager.js",
+    "routers": "./Entrega_Clase_8/routers.js",
+    "router_hbs": "./Entrega_Clase_10/router_hbs.js",
+    "router_pug": "./Entrega_Clase_10/router_pug.js",
+    "router_ejs": "./Entrega_Clase_10/router_ejs.js"
   }
 }
