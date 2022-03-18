@@ -5,6 +5,7 @@ Entrega actual: Clase 10
 Primer instalar las dependecias ya que se actualizaron respecto a la ultima entrega.
 
 La entrega se inicializa con node Entrega_Clase_10/entrega_10.js una vez levantado le servidor se accede desde:
+    
     - Pagina con plantilla en Handlebars: localhost:8080/hbs/products
     - Pagina con plantilla en Pug: localhost:8080/pug/products
     - Pagina con plantilla en EJS: localhost:8080/ejs/products
