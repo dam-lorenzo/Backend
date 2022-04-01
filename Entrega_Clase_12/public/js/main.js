@@ -24,7 +24,6 @@ function addItem(e) {
         name:  name,
         price: price
     };
-    alert(name, price)
     socket.emit('item', item);
     return false;
 }
