@@ -1,6 +1,5 @@
 //      Requires
-const express           = require('express')
-const { print }         = require('print')
+const express                   = require('express')
 const { Server: IOServer }      = require('socket.io')
 const { Server: HttpServer }    = require('http')
 
@@ -24,17 +23,16 @@ const products = [{name: 'Notebook', price: '700'}]
 //      Server connection
 
 httpServer.listen( PORT, () => {
-    print(`Servidor HTTP excuchando en el puerto ${PORT}`)
+    console.log(`Servidor HTTP excuchando en el puerto ${PORT}`)
 } )
 
 //      Socket
 
 io.on('connection', (socket) => {
-    print('User connected')
+    console.log('User connected')
     socket.emit('items', products)
     socket.on('item', (data) => {   
         products.push(data)
-        print(products)
         io.sockets.emit('items', products)
     } )
     socket.emit('messages', messages)
