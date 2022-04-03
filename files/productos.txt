@@ -1,6 +1,0 @@
-{"Nombre":"Computadora","Precio":12,"Id":1}
-{"Nombre":"Television","Precio":19,"Id":2}
-{"Nombre":"Smatwatch","Precio":20,"Id":3}
-{"Nombre":"Smartphone","Precio":10,"Id":4}
-{"Nombre":"Tablet","Precio":9,"Id":5}
-{"Nombre":"Notebook","Precio":15,"Id":6}
