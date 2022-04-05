@@ -10,10 +10,6 @@ class Container {
     addItem(element){
         // Agrega un item al archivo correspondiente
         if (typeof(element) == 'object'){
-            const missing_keys = this.validateItem(element)
-            if (missing_keys.lenght > 0) {
-                return {'error': `el item cargado no tiene la key ${missing_keys.join(', ')}`}
-            }
             element.Id = this.id
             element.timestamp = Date.now()
             this.id++
@@ -71,7 +67,7 @@ class Container {
     }
 
     updateItem(_id, new_item) {
-        // Actualiza la informacion de un elemento con el id dado
+        // Actualiza la informacion de un elemento con el id dado, solo para products
         if (typeof(new_item) != 'object') {
             return {'error': 'el item cargado debe ser un objeto'}
         }
@@ -123,16 +119,44 @@ class Container {
         fs.writeFileSync(this.file_name,'')
     }
 
-    validateItem(item){
-        const keys = ['name', 'description', 'code', 'image', 'price', 'stock']
-        const missing_keys = []
-        for (let key of keys) {
-            if (!(key in item)) {
-                missing_keys.push(key)
-            }
-        }
-        return missing_keys
+    getProducts(_id) {
+        const cart = this.getByID(_id)
+        return cart.products
     }
+
+    addProduct(_id, product) {
+        const cart = this.getByID(_id)
+        cart.products.push(product)
+        this.deleteByID(_id)
+        fs.appendFileSync(this.file_name, JSON.stringify(cart) + '\n')
+    }
+
+    deleteProduct(_id, id_prod) {
+        const cart = this.getByID(_id)
+        const index = getIndex(id_prod, cart.products)
+        if (index >= 0) {
+            cart.products.splice(index, 1)
+            this.deleteByID(_id)
+            fs.appendFileSync(this.file_name, JSON.stringify(cart) + '\n')
+            return cart
+        }
+        else {
+            return {'error': `El carrito Id${_id} no tiene ningun producto con id${id_prod}`}
+        }
+    }
+}
+
+//      Helpers
+
+function getIndex(element, list_to_search){
+    let index = -1
+    for (let item of list_to_search){
+        if (item.Id == element) {
+            index = list_to_search.indexOf(item)
+            break
+        }
+    }
+    return index
 }
 
 module.exports = { Container }
