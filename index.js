@@ -1,7 +1,8 @@
 //      Requires
 const express               = require('express')
-const { print } = require("print")
-const { router_products } = require("router_products")
+const { print }             = require("print")
+const { router_products }   = require("router_products")
+const { router_carts }      = require("router_carts")
 
 //      Server Config
 const app               = express()
@@ -18,3 +19,5 @@ server.on('error', error => print(`Error en el servidor ${error}`))
 //      Server routes
 
 app.use('/api/products', router_products)
+
+app.use('/api/carts', router_carts)
