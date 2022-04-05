@@ -1,6 +1,6 @@
 const express       = require('express')
 const { Router }    = express
-const { Container } = require('apiManager')
+import { Container } from "../helpers/api_manager";
 
 //      Global variables
 
