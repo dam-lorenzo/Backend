@@ -1,8 +1,8 @@
 //      Requires
 const express               = require('express')
-import { print } from "./src/helpers/print.js"
-import { router_products } from "./src/controllers/router_products"
-import { router_carts } from "./src/controllers/router_carts"
+const { print }             = require("print")
+const { router_products }   = require("router_products")
+const { router_carts }      = require("router_carts")
 
 //      Server Config
 const app               = express()
