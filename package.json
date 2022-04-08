@@ -6,6 +6,7 @@
     "container": "./src/helpers/file_manager.js",
     "apiManager": "./src/helpers/api_manager.js",
     "router_products": "./src/controllers/router_products.js",
-    "router_carts": "./src/controllers/router_carts.js"
+    "router_carts": "./src/controllers/router_carts.js",
+    "router_default": "./src/controllers/router_default.js"
   }
 }
