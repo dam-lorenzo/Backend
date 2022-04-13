@@ -25,26 +25,8 @@ function addItem(e) {
         price: price
     };
     socket.emit('item', item);
+    document.getElementById('name').value = ''
+    document.getElementById('price').value = ''
     return false;
 }
-socket.on('messages', function(data) { 
-    render(data)
- })
 
-function render(data) {
-    const html = data.map((elem, index) => {
-        return(`<div>
-            <strong>${elem.user}</strong>:
-            <em>${elem.text}</em> </div>`)
-    }).join(" ");
-    document.getElementById('messages').innerHTML = html;
-}
-
-function sendMessage(e) {
-    const message = {
-        user: document.getElementById('user').value,
-        text: document.getElementById('text').value
-    };
-    socket.emit('new-message', message);
-    return false;
-}
