@@ -9,7 +9,7 @@
 
     <title>Mi Aplicación con Sockets</title>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main_chat.js"></script>
 </head>
 
 <body>
@@ -23,10 +23,10 @@
     </header>
     <h1>Chat con soporte</h1>
     <div id="messages"></div>
-    <form onsubmit="sendMessage(this)">
-        <input type="text" id="user" placeholder="Tu Nombre" >
-        <input type="text" id="text" placeholder="Mensaje">
-        <input type="submit" value="Send">
+    <form onsubmit="return addMessage(this)">
+        <input type="text" id="username" placeholder="Tu Nombre" />
+        <input type="text" id="texto" placeholder="Mensaje" />
+        <input type="submit" value="Send" />
     </form>
     
 </body>
