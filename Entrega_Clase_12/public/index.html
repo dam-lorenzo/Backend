@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productos HTML</title>
 
     <!-- CSS only -->
@@ -15,22 +14,22 @@
     <script src="js/main.js"></script>
 
 
-</head>
-<body>
-      <header>
-        <nav class="navbar sticky-top navbar-dark bg-primary">
-            <h1>Products</h1>
-            <div class="container-fluid">
-              <a class="navbar-brand" href="chat.html">Chat</a>
-            </div>
-        </nav>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar sticky-top navbar-dark bg-primary">
+          <h1>Products</h1>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="chat.html">Chat</a>
+          </div>
+      </nav>
     </header>
     <div class="container mt-3">
       <div class="jumbotron">
         <h1 style="color: blue">Ingrese el producto</h1>
         <br />
   
-        <form onsubmit="addItem(this)">
+        <form onsubmit="return addItem(this)">
           <div class="form-group">
             <label for="name"><b>Nombre</b></label>
             <input id="name" class="form-control" type="text" name="name" />
@@ -57,5 +56,5 @@
             
       </div>
     </div>
-</body>
+  </body>
 </html>
