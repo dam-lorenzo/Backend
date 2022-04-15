@@ -9,9 +9,9 @@ const app               = express()
 const PORT              = 8080
 const httpServer        = new HttpServer(app)
 const io                = new IOServer(httpServer)
-const sqlite            = new SQLite_manager('prueba')
+const sqlite            = new SQLite_manager('chat')
 const tabla_name        = 'messages'
-// sqlite.createTable(tabla_name)
+sqlite.createTable(tabla_name)
 
 app.use(express.static(__dirname + '/public'))
 
@@ -21,8 +21,7 @@ app.get('/', (req, res) => {
 
 //      Global variables
 
-// const messages = sqlite.getMessages(tabla_name)
-const messages = []
+let messages = sqlite.getMessages(tabla_name)
 const products = [
                     // {name: 'Notebook', price: '700'}
                 ]
@@ -48,7 +47,7 @@ io.on('connection', (socket) => {
     socket.on('new-message', (data) => {
         messages.push(data)
         console.log('mensaje recibido')
-        // sqlite.addMessage(tabla_name, data)
+        sqlite.addMessage(tabla_name, data)
         io.sockets.emit('messages', messages)
     })
 })
