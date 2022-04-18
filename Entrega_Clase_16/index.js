@@ -3,6 +3,7 @@ const express                   = require('express')
 const { Server: IOServer }      = require('socket.io')
 const { Server: HttpServer }    = require('http')
 const { SQLite_manager }        = require(__dirname + '/src/sqlite3_manager')
+const { mariaDB_manager }        = require(__dirname + '/src/mariadb_manager')
 
 //      Server Config
 const app               = express()
@@ -10,8 +11,12 @@ const PORT              = 8080
 const httpServer        = new HttpServer(app)
 const io                = new IOServer(httpServer)
 const sqlite            = new SQLite_manager('chat')
-const tabla_name        = 'messages'
-sqlite.createTable(tabla_name)
+const table_messages_name        = 'messages'
+sqlite.createTable(table_messages_name)
+
+const mariaDB = new mariaDB_manager()
+const table_products = 'products'
+mariaDB.createTable(table_products)
 
 app.use(express.static(__dirname + '/public'))
 
@@ -21,10 +26,11 @@ app.get('/', (req, res) => {
 
 //      Global variables
 
-let messages = sqlite.getMessages(tabla_name)
-const products = [
-                    // {name: 'Notebook', price: '700'}
-                ]
+let messages = sqlite.getMessages(table_messages_name)
+// const products = [
+//                     // {name: 'Notebook', price: '700'}
+//                 ]
+const products = mariaDB.getItems(table_products)
 
 //      Server connection
 
@@ -39,15 +45,15 @@ io.on('connection', (socket) => {
     socket.emit('messages', messages)
     socket.emit('items', products)
     socket.on('item', (item) => {
-    console.log(item)
         products.push(item)
+        mariaDB.addItem(table_products, item)
         io.sockets.emit('items', products)
     })
 
     socket.on('new-message', (data) => {
         messages.push(data)
         console.log('mensaje recibido')
-        sqlite.addMessage(tabla_name, data)
+        sqlite.addMessage(table_messages_name, data)
         io.sockets.emit('messages', messages)
     })
 })
