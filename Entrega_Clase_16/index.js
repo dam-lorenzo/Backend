@@ -27,9 +27,6 @@ app.get('/', (req, res) => {
 //      Global variables
 
 let messages = sqlite.getMessages(table_messages_name)
-// const products = [
-//                     // {name: 'Notebook', price: '700'}
-//                 ]
 const products = mariaDB.getItems(table_products)
 
 //      Server connection
