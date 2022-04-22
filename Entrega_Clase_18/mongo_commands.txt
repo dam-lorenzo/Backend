@@ -1,0 +1,42 @@
+> use ecommerce
+> db.createCollection('messages')
+> db.createCollection('products')
+> db.products.insertMany([
+                            { name: 'Macbook', price: 2000 },
+                            { name: 'iPad', price: 500 },
+                            { name: 'iPhone', price: 1000 },
+                            { name: 'Notebook', price: 1500 },
+                            { name: 'SmartPhone', price: 500 },
+                            { name: 'SmartWatch', price: 100 },
+                            { name: 'Monitor', price: 300 },
+                            { name: 'Escritorio', price: 200 },
+                            { name: 'Teclaro', price: 50 },
+                            { name: 'Mouse', price: 50 }
+                        ])
+
+> db.messages.insertMany([
+                                { author: 'Damian', text: 'Hola' },
+                                { author: 'Soporte', text: 'Hola' },
+                                { author: 'Soporte', text: 'En que puedo ayudarlo' },
+                                { author: 'Damian', text: 'Queria saber si venden PC de escritorio' },
+                                { author: 'Soporte', text: 'En estos momentos no tenemos stock' },
+                                { author: 'Soporte', text: 'Pero trabajamos piezas por separado' },
+                                { author: 'Soporte', text: 'Y despues hacemos el armado por separado' },
+                                { author: 'Damian', text: 'Me interesa que me avisen cuando tengan stock' },
+                                { author: 'Soporte', text: 'Perfecto cuando dispongamos de mercaderia nos ponemos en contacto' },
+                                { author: 'Damian', text: 'Muchas gracias' }
+                            ])
+> db.products.find({}, {'_id':0})
+> db.messages.find({}, {'_id':0})
+> db.products.count()
+> db.messages.count()
+> db.products.insertOne({ name: 'PC', price: '1500' })
+> db.messages.insertOne({ author: 'Soporte', text: 'Gracias a usted' })
+> db.products.find( { 'price': { $lt: { 1000 } } }, {'_id':0}))
+> db.products.find( { 'price': { $gt: { 3000 } } }, {'_id':0}))
+> db.products.find( { 'price': { $gt: { 1000 } , $lt: { 3000 } } }, {'_id':0}))
+> db.products.find( {}, {'_id': 0} ).sort({ 'price': -1 }).skip(2).limit(1)
+> db.products.updateMany( {}, { $set: { 'stock': 100 } } )
+> db.products.updateMany( { 'price': { $gt: 4000 } }, { $set: { 'stock': 0 } } )
+> db.products.deleteMany( { 'price': { $lt: 1000 } } )
+> db.products.addUser( { 'user': 'pepe', pwd: 'asd456', roles: [ { role: "read", db: "ecommerce" } ] } )

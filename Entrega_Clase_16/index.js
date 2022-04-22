@@ -3,7 +3,7 @@ const express                   = require('express')
 const { Server: IOServer }      = require('socket.io')
 const { Server: HttpServer }    = require('http')
 const { SQLite_manager }        = require(__dirname + '/src/sqlite3_manager')
-const { mariaDB_manager }        = require(__dirname + '/src/mariadb_manager')
+const { mariaDB_manager }       = require(__dirname + '/src/mariadb_manager')
 
 //      Server Config
 const app               = express()
@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
         products.push(item)
         mariaDB.addItem(table_products, item)
         io.sockets.emit('items', products)
+        console.log(products)
     })
 
     socket.on('new-message', (data) => {
@@ -52,5 +53,6 @@ io.on('connection', (socket) => {
         console.log('mensaje recibido')
         sqlite.addMessage(table_messages_name, data)
         io.sockets.emit('messages', messages)
+        console.log(messages)
     })
 })
