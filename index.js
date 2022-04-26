@@ -1,9 +1,9 @@
 //      Requires
 const express               = require('express')
-const { print }             = require("print")
-const { router_products }   = require("router_products")
-const { router_carts }      = require("router_carts")
-const { router_default }    = require("router_default")
+const { print }             = require("./src/helpers/print")
+const { router_products }   = require("./src/controllers/router_products")
+const { router_carts }      = require("./src/controllers/router_carts")
+const { router_default }    = require("./src/controllers/router_default")
 
 //      Server Config
 const app               = express()
