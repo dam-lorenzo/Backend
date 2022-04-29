@@ -1,9 +1,9 @@
 const express       = require('express')
 const { Router }    = express
-const { Container } = require("../helpers/api_manager")
+const { cartsDao } = require('../daos/carts_dao')
 
 //      Global variables
-const api = new Container('carts')
+const api = new cartsDao()
 
 //      Routers
 
