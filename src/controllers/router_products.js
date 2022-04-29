@@ -1,10 +1,10 @@
 const express       = require('express')
 const { Router }    = express
-const { Container } = require("../helpers/api_manager")
+const { productsDao } = require("../daos/products_dao")
 
 //      Global variables
 
-const api = new Container('products')
+const api = new productsDao('products')
 let is_admin = false
 
 //      Router
